@@ -1,0 +1,51 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: monospace;
+}
+
+.contraire {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 400px;
+    height: 70%;
+    transform: translate(-50%,-50%);
+    border: 2px solid;
+    border-radius: 16px;
+}
+
+.logo img {
+    width: 30%;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.info {
+    display: flex;
+    justify-content: space-between;
+}
+
+.Title {
+    display: block;
+    text-align: center;
+}
+
+.user-info {
+    position: relative;
+    text-align: center;
+    margin: 11px 10px;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 70%;
+}
+
+.info-box {
+    border: 1px solid blue;
+    padding: 5px;
+    width: 45%; /* Adjust this value to fit your layout better */
+    margin: 5px auto;
+}

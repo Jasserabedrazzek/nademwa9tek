@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup Page</title>
+    <link rel="stylesheet" type="text/css" href="signup.css">
+    <link rel="icon" href="add-friend.png">
+    
+</head>
+<body>
+    <div class="container">
+        <h1>Signup</h1>
+        <form id="signupForm" method="POST" action="signup.php">
+          <div class="form-group">
+            <label for="nom">Nom:</label>
+            <input type="text" id="nom" name="nom" required>
+          </div>
+          <div class="form-group">
+            <label for="prenom">Prénom:</label>
+            <input type="text" id="prenom" name="prenom" required>
+          </div>
+          <div class="form-group">
+            <label for="telephone">Numéro de téléphone:</label>
+            <input type="tel" id="telephone" name="telephone" minlength="8" maxlength="8" required>
+          </div>
+          <div class="form-group">
+            <label for="bac-annee">Bac Année:</label>
+            <input type="number" id="bac-annee" name="bac-annee" min="2024" placeholder="Ex : 2024" required>
+          </div>
+          <div class="form-group">
+            <label for="option">Option:</label>
+            <select id="option" name="option" required>
+              <option value="Math">Bac Math</option>
+              <option value="science">bac Science</option>
+              <option value="Tech">bac Technique</option>
+              <option value="letters">bac letters</option>
+              <option value="Eco">bac Economic</option>
+              <option value="sport">bac sport</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+          </div>
+          <div class="form-group">
+            <label for="confirm-password">Confirm Password:</label>
+            <input type="password" id="confirm-password" name="confirm-password" required>
+          </div>
+          <button type="submit">Signup</button>
+        </form>
+        
+      </div>
+
+      
+</body>
+</html>

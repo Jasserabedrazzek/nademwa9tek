@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" 
+    integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" 
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="user.css">
+    <link rel="shortcut icon" href="user.png" type="image/x-icon">
+    <title>User Information</title>
+</head>
+<body>
+    <div class="contraire">
+        <div class="logo">
+            <img src="user.png"  alt="user">
+        </div>
+        <br> <br> <br><br><br>
+        <form method="get" action="user.php" class="user-info">
+            <h2 class="Title"><i class="fas fa-user-circle fa-lg"></i> Nom d'utilisateur</h2><br>
+            <div class="username info"><br>
+                <h3 id="name" class="info-box">Nom :</h3>
+                <h3 id="Lastname" class="info-box">Prénom :</h3>
+            </div><br>
+            <h2 class="Title"><i class="fas fa-id-card fa-lg"></i> ID de l'utilisateur</h2><br><br>
+            <div class="user-id-tel info"><br>
+                <h3 id="telephone" class="info-box">Téléphone :</h3>
+                <h3 id="user-id" class="info-box">ID :</h3><br><br>
+            </div><br> <br>
+            
+            <div class="bac-info info">
+                <h3 id="Bac" class="info-box">Bac :</h3>
+                <h3 id="Bac-annee" class="info-box">Année du Bac :</h3>
+            </div>
+            <!-- Hidden input field to store the userID -->
+            <input type="hidden" name="id" id="id" value="">
+            <br> <br><br>
+        </form>
+    </div>
+
+    <script>
+        function getURLParameter(name) {
+            // JavaScript function to get the value of a URL parameter by name
+            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+            var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+            var results = regex.exec(location.search);
+            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+        }
+    
+        // Get the userID from the URL parameter 'userID'
+        var userID = getURLParameter('userID');
+    
+        // Function to fetch and read the JSON file based on the user ID
+        function readJSONFileByUserID(userID) {
+            const jsonFileName = userID + ".json";
+            fetch(jsonFileName)
+                .then(response => response.json())
+                .then(data => {
+                    // Data is now a JavaScript object containing the JSON content
+                    // Populate the form fields with the user information
+                    document.getElementById('name').innerText = "Nom : " + data.name;
+                    document.getElementById('Lastname').innerText = "Prénom : " + data.Lastname;
+                    document.getElementById('telephone').innerText = "Téléphone : " + data.telephone;
+                    document.getElementById('user-id').innerText = "ID : " + data.userID;
+                    document.getElementById('Bac').innerText = "Bac : " + data.Bac;
+                    document.getElementById('Bac-annee').innerText = "Année du Bac : " + data.Bac_annee;
+                    document.getElementById('id').value = data.userID; // Set the hidden input value
+                })
+                .catch(error => {
+                    console.error('Error reading the JSON file:', error);
+                });
+        }
+
+        // Call the readJSONFileByUserID function to fetch and read the JSON file based on the userID
+        readJSONFileByUserID(userID);
+    </script>
+</body>
+</html>
